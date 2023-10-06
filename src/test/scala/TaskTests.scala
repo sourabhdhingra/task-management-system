@@ -6,7 +6,7 @@ import org.scalatest.matchers.should.Matchers.shouldNot
 import java.time.LocalDate
 import java.util.UUID
 
-class TestTask extends AnyFunSuite{
+class TaskTests extends AnyFunSuite{
   test("Able to create a new task with status Incomplete") {
     val randomUUID = UUID.randomUUID()
     val description = "test task"
