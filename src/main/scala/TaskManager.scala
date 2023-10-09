@@ -10,18 +10,24 @@ object taskManager {
     tasks = tasks :+ Task(UUID.randomUUID(), description, dueDate, TaskStatus.Incomplete)
   }
 
-  def viewTask(task: Task) = {
+  def addTask(task: Task): Unit = {
+    tasks = tasks :+ task
+  }
+
+  def viewTask(task: Task): String = {
     val taskPrint =
       s"""
         |Task Description: ${task.taskDescription}
         |Due Date: ${task.dueDate}
         |Status: ${task.status}
         |""".stripMargin
-    println(taskPrint)
+    return taskPrint
   }
 
-  def viewAllTasks() = {
-    tasks.foreach(viewTask)
+  def viewAllTasks(): String = {
+    val allTasks = new StringBuilder("")
+    tasks.foreach((task) => allTasks.append(viewTask(task) + "\n"))
+    return allTasks.toString()
   }
   def viewTaskByStatus(status: TaskStatus) = {
     val tasksByStatus = tasks.filter(task => task.status == status)
@@ -36,14 +42,18 @@ object taskManager {
 }
 
 @main def main() = {
-  val testTask = Task(UUID.randomUUID(), "description", LocalDate.now(), TaskStatus.Incomplete)
-  taskManager.addTask("Wake up early", LocalDate.now())
-  taskManager.addTask("Wake up late", LocalDate.now())
-  taskManager.viewTask(testTask)
-  taskManager.viewAllTasks()
-  println("-------------------")
-  taskManager.viewTaskByStatus(TaskStatus.Incomplete)
-  println("-------------------")
-  taskManager.markComplete(testTask)
-  taskManager.viewTask(testTask)
+//  val testTask = Task(UUID.randomUUID(), "description", LocalDate.now(), TaskStatus.Incomplete)
+//  taskManager.addTask(testTask)
+//  println(taskManager.viewAllTasks())
+//  taskManager.deleteTask(testTask)
+//  println(taskManager.viewAllTasks())
+//  taskManager.addTask("Wake up early", LocalDate.now())
+//  taskManager.addTask("Wake up late", LocalDate.now())
+//  println(taskManager.viewTask(testTask))
+//  println(taskManager.viewAllTasks())
+//  println("-------------------")
+//  taskManager.viewTaskByStatus(TaskStatus.Incomplete)
+//  println("-------------------")
+//  taskManager.markComplete(testTask)
+//  taskManager.viewTask(testTask)
 }
