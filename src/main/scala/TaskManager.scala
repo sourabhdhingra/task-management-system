@@ -21,7 +21,7 @@ object taskManager {
         |Due Date: ${task.dueDate}
         |Status: ${task.status}
         |""".stripMargin
-    return taskPrint
+    taskPrint
   }
 
   def viewTaskByDescription(descriptionText: String) = {
@@ -33,7 +33,7 @@ object taskManager {
 
   def viewAllTasks(): String = {
     val allTasks = new StringBuilder("")
-    tasks.foreach((task) => allTasks.append(viewTask(task) + "\n"))
+    tasks.foreach(task => allTasks.append(viewTask(task) + "\n"))
     allTasks.toString()
   }
   def viewTaskByStatus(status: TaskStatus) = {
