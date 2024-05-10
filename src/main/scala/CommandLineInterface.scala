@@ -47,8 +47,10 @@ def main(): Unit = {
           val dateFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy")
           val dueDate = LocalDate.parse(scala.io.StdIn.readLine(), dateFormat)
           taskManager.addTask(description, dueDate)
-
-      count = count + 1
+        case 3 =>
+          println("Enter text to search containing task description!")
+          val text = scala.io.StdIn.readLine()
+          println(taskManager.viewTaskByDescription(text))
     }
   }
 

@@ -24,10 +24,17 @@ object taskManager {
     return taskPrint
   }
 
+  def viewTaskByDescription(descriptionText: String) = {
+    val filteredTasks = new StringBuilder("")
+    tasks.filter(task => task.taskDescription.contains(descriptionText))
+      .foreach(task => filteredTasks.append(viewTask(task) + "\n"))
+    filteredTasks
+  }
+
   def viewAllTasks(): String = {
     val allTasks = new StringBuilder("")
     tasks.foreach((task) => allTasks.append(viewTask(task) + "\n"))
-    return allTasks.toString()
+    allTasks.toString()
   }
   def viewTaskByStatus(status: TaskStatus) = {
     val tasksByStatus = tasks.filter(task => task.status == status)
@@ -41,19 +48,19 @@ object taskManager {
   }
 }
 
-@main def main() = {
-//  val testTask = Task(UUID.randomUUID(), "description", LocalDate.now(), TaskStatus.Incomplete)
-//  taskManager.addTask(testTask)
-//  println(taskManager.viewAllTasks())
-//  taskManager.deleteTask(testTask)
-//  println(taskManager.viewAllTasks())
-//  taskManager.addTask("Wake up early", LocalDate.now())
-//  taskManager.addTask("Wake up late", LocalDate.now())
-//  println(taskManager.viewTask(testTask))
-//  println(taskManager.viewAllTasks())
-//  println("-------------------")
-//  taskManager.viewTaskByStatus(TaskStatus.Incomplete)
-//  println("-------------------")
-//  taskManager.markComplete(testTask)
-//  taskManager.viewTask(testTask)
-}
+//@main def main() = {
+////  val testTask = Task(UUID.randomUUID(), "description", LocalDate.now(), TaskStatus.Incomplete)
+////  taskManager.addTask(testTask)
+////  println(taskManager.viewAllTasks())
+////  taskManager.deleteTask(testTask)
+////  println(taskManager.viewAllTasks())
+////  taskManager.addTask("Wake up early", LocalDate.now())
+////  taskManager.addTask("Wake up late", LocalDate.now())
+////  println(taskManager.viewTask(testTask))
+////  println(taskManager.viewAllTasks())
+////  println("-------------------")
+////  taskManager.viewTaskByStatus(TaskStatus.Incomplete)
+////  println("-------------------")
+////  taskManager.markComplete(testTask)
+////  taskManager.viewTask(testTask)
+//}
