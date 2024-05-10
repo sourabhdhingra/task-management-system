@@ -16,3 +16,5 @@ Coding approach followed:
    - Code implemented to make unit test cases pass
 3. Singleton pattern used wherever needed
 4. CLI class has `main` entry point as supposed to be
+5. GitHub Action - a workflow is enabled to run Unit tests in build phase
+   - `sbt test` is run on every push and Pull request raised.
