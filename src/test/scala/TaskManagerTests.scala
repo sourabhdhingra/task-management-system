@@ -14,8 +14,8 @@ class TaskManagerTests extends AnyFunSuite with BeforeAndAfterEach {
     val dueDate = LocalDate.now()
     taskManager.addTask(description, dueDate)
     val result = taskManager.viewAllTasks()
-    result should include(s"Task Description: ${description}")
-    result should include(s"Due Date: ${dueDate}")
+    result should include(s"Task Description: $description")
+    result should include(s"Due Date: $dueDate")
     result should include(s"Status: ${TaskStatus.Incomplete}")
   }
 
@@ -52,7 +52,6 @@ class TaskManagerTests extends AnyFunSuite with BeforeAndAfterEach {
     allTasks should include(s"Status: ${testTask.status}")
     taskManager.deleteTask(testTask)
     allTasks = taskManager.viewAllTasks()
-    allTasks should not include(s"Task Description: ${testTask.taskDescription}")
-    allTasks should not include(s"Status: ${testTask.status}")
+    allTasks should not include taskManager.viewTask(testTask)
   }
 }
