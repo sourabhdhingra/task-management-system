@@ -9,7 +9,7 @@ class CommandLineInterfaceTests extends AnyFunSuite{
     entryMessage shouldEqual
       s"""
          |Welcome to the Task Management System!
-         |Please select an operation below:
+         |Please select an operation below (Enter -1 to exit):
          |1. List all tasks
          |2. Add a new task
          |3. View an existing task
