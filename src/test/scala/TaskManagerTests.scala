@@ -47,7 +47,6 @@ class TaskManagerTests extends AnyFunSuite with BeforeAndAfterEach {
     val testTask = Task(UUID.randomUUID(), "test task to be deleted", LocalDate.now(), TaskStatus.Incomplete)
     taskManager.addTask(testTask)
     var allTasks = taskManager.viewAllTasks()
-    println(allTasks)
     allTasks should include(s"Task Description: ${testTask.taskDescription}")
     allTasks should include(s"Status: ${testTask.status}")
     taskManager.deleteTask(testTask)
