@@ -1,4 +1,5 @@
 import sbt.Keys.libraryDependencies
+import Dependencies._
 
 ThisBuild / version := "0.1.0-SNAPSHOT"
 
@@ -9,4 +10,7 @@ lazy val root = (project in file("."))
     name := "TaskManagementSystem"
 )
 
-libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.10" % "test"
+libraryDependencies ++= Seq(
+    scalaTestLibrary,
+    scalaLangLibrary
+)
